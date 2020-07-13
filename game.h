@@ -8,6 +8,15 @@
 #ifndef _GAME_H
 #define _GAME_H
 #include <curses.h>
+
+#define MAX 50
+
+struct LogData{
+  char name[20];
+    int team;//0 RED 1 BLUE
+};
+
+
 struct Point{
     int x;
     int y;
@@ -41,6 +50,8 @@ struct TransMsg{
 };
 
 struct Map court;
+
+WINDOW *Football, *Message, *Help, *Score, *Write;
 
 WINDOW *create_newwin(int width, int height, int startx, int starty) {
     WINDOW *win;
@@ -104,11 +115,11 @@ void initfootball() {
     init_pair(8, COLOR_GREEN, COLOR_BLACK);
     init_pair(9, COLOR_GREEN, COLOR_BLACK);
 
-    create_newwin(court.width, court.heigth, court.start.x, court.start.y);
-    create_newwin(court.width, 5, court.start.x, court.start.y + court.heigth);
-    create_newwin(20, court.heigth, court.start.x + court.width, court.start.y);
-    create_newwin(20, 5, court.start.x + court.width, court.start.y + court.heigth);
-    create_newwin(court.width + 20, 5, court.start.x, court.start.y + court.heigth + 5);
+    Football = create_newwin(court.width, court.heigth, court.start.x, court.start.y);
+    Message = create_newwin(court.width, 5, court.start.x, court.start.y + court.heigth);
+    Help = create_newwin(20, court.heigth, court.start.x + court.width, court.start.y);
+    Score = create_newwin(20, 5, court.start.x + court.width, court.start.y + court.heigth);
+    Write = create_newwin(court.width + 20, 5, court.start.x, court.start.y + court.heigth + 5);
 
 
 }

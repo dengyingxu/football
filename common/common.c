@@ -29,7 +29,7 @@ char *get_value(char *path, char *key) {
     ssize_t nrd;
     char *line = NULL, *sub = NULL;
     size_t linecap;
-    extern char conf_ans[50]; //ans需要返回，故采用全局变量
+//    extern char conf_ans[50]; //ans需要返回，故采用全局变量
 
     //逐行读入文件内容,getline()函数会读取换行符
     while ((nrd = getline(&line, &linecap, fp)) != -1) {
