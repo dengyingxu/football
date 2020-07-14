@@ -14,11 +14,11 @@ char *conf = "./server.conf";
 struct User *rteam;
 struct User *bteam;
 int data_port;
-
+int port = 0;
 //struct Map court;
 
 int main(int argc, char **argv) {
-    int opt, port = 0, listener;
+    int opt, listener;
     int epoll_fd;
     pthread_t draw_t;//创建多线程，在服务端绘制画面
     while ((opt = getopt(argc, argv, "p:")) != -1) {
@@ -77,7 +77,8 @@ int main(int argc, char **argv) {
     socklen_t len = sizeof(client);
 
     while(1) {
-        w_gotoxy_puts(Message, 1, 1, "Wait for Login\n");
+        //w_gotoxy_puts(Message, 1, 1, "Wait for Login\n");
+        //wrefresh(Message);
         int nfds = epoll_wait(epoll_fd, events, MAX * 2, -1);
 
         for (int  i = 0; i < nfds; i++) {
@@ -85,10 +86,10 @@ int main(int argc, char **argv) {
                 //accept();
                 udp_accept(epoll_fd, listener);
             }
-            char info[1024] = {0};
-            recvfrom(events[i].data.fd, (void *)info, sizeof(info), 0, (struct sockaddr *)&client, &len);
-            sprintf(info, "Login: %s : %d", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
-            w_gotoxy_puts(Message, 1, 2, info);
+            //char info[1024] = {0};
+            //recvfrom(events[i].data.fd, (void *)info, sizeof(info), 0, (struct sockaddr *)&client, &len);
+            //sprintf(info, "Login: %s : %d", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
+            //w_gotoxy_puts(Message, 1, 2, info);
         }
     }
     return 0;

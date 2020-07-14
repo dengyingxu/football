@@ -24,7 +24,10 @@ int socket_create_udp(int port) {
     server.sin_port = htons(port);
     server.sin_addr.s_addr = INADDR_ANY;
 
-    if (bind(server_listen, (struct sockaddr *)(&server), sizeof(server)) < 0) { 
+    int opt = 1;
+    setsockopt(server_listen, SOL_SOCKET, SO_REUSEADDR, &opt, sizeof(opt));
+
+    if ((bind(server_listen, (struct sockaddr *)(&server), sizeof(server))) < 0) { 
         perror("bind");
         return -1;
     }
