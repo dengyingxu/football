@@ -71,20 +71,25 @@ int main(int argc, char **argv) {
     ev.data.fd = listener;
 
     epoll_ctl(epoll_fd, EPOLL_CTL_ADD, listener, &ev);
-    struct LogData lg;
     struct sockaddr_in client;
-
     socklen_t len = sizeof(client);
 
     while(1) {
         //w_gotoxy_puts(Message, 1, 1, "Wait for Login\n");
         //wrefresh(Message);
+        DBG(YELLOW"EPOLL"NONE" : before epoll_wait\n");
         int nfds = epoll_wait(epoll_fd, events, MAX * 2, -1);
+        DBG(YELLOW"EPOLL"NONE" : Atfer epoll_wait\n");
 
         for (int  i = 0; i < nfds; i++) {
+            char buff[512] = {0};
+            DBG(YELLOW"EPOLL"NONE" : Doing with %dth fd\n", i);
             if (events[i].data.fd  == listener) {
                 //accept();
                 udp_accept(epoll_fd, listener);
+            } else {
+                recv(events[i].data.fd, buff, sizeof(buff), 0);
+                printf(PINK"RECV"NONE" : %s\n", buff);
             }
             //char info[1024] = {0};
             //recvfrom(events[i].data.fd, (void *)info, sizeof(info), 0, (struct sockaddr *)&client, &len);

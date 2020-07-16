@@ -10,7 +10,6 @@
 #include "./udp_client.h"
 #include "./udp_server.h"
 #include "./head.h"
-
 extern int port;
 void add_event(int epollfd, int fd, int events) {
     struct epoll_event ev;
@@ -46,16 +45,30 @@ int udp_connect(int epollfd, struct sockaddr_in *serveraddr) {
 int udp_accept(int epollfd, int fd) {
     struct sockaddr_in client;
     int new_fd, ret;
-    char msg[512] = {0};
+    struct LogRequest request;
+    struct LogResponse response;
+
+    bzero(&request, sizeof(request));
+    bzero(&response, sizeof(response));
+
     socklen_t len = sizeof(struct sockaddr_in);
-    ret = recvfrom(fd, msg, sizeof(msg), 0, (struct sockaddr *)&client, &len);
-    if (ret < 0) {
+    ret = recvfrom(fd, (void *)&request, sizeof(request), 0, (struct sockaddr *)&client, &len);
+    if (ret != sizeof(request)) {
+        response.type = 1; // failed
+        strcpy(response.msg, "Login failed.");
+        sendto(fd, (void *)&response, sizeof(response), 0, (struct sockaddr *)&client, len);
         return -1;
     }
-    DBG(GREEN"INFO"NONE" : %s : %d login!\n", inet_ntoa(client.sin_addr), ntohs(client.sin_port));
+    response.type = 0; //代表成功，不能忘
+    strcpy(response.msg, "Login success.Enjoy youself.");
+    sendto(fd, (void *)&response, sizeof(response), 0, (struct sockaddr *)&client, len);
 
-    DBG(PINK"RECV"NONE" : %s\n", msg);
 
+    if (request.team)
+        DBG(GREEN"INFO"NONE" :"BLUE" %s on %s:%d login!(%s)\n"NONE, request.name, inet_ntoa(client.sin_addr), ntohs(client.sin_port), request.msg);
+    else  
+        DBG(GREEN"INFO"NONE" :"RED" %s on %s:%d login!(%s)\n"NONE, request.name, inet_ntoa(client.sin_addr), ntohs(client.sin_port), request.msg);
+    
     new_fd = udp_connect(epollfd, &client);
     return new_fd;
 }
