@@ -15,8 +15,11 @@
  * params: path配置文件的路径和名称, key要的数据类型
  * return value: 返回需要的数据
  */
-char *get_value(char *path, char *key) {
+/*char *get_value(char *path, char *key) {
     FILE *fp = NULL;
+    ssize_t nrd;
+    char *line = NULL, *sub = NULL;
+    size_t linecap;
     if (path == NULL || key == NULL) {
         fprintf(stderr, "error in  argument\n");
         return NULL;
@@ -26,9 +29,6 @@ char *get_value(char *path, char *key) {
         return NULL;
     }
 
-    ssize_t nrd;
-    char *line = NULL, *sub = NULL;
-    size_t linecap;
 //    extern char conf_ans[50]; //ans需要返回，故采用全局变量
 
     //逐行读入文件内容,getline()函数会读取换行符
@@ -50,7 +50,7 @@ char *get_value(char *path, char *key) {
     }
     return conf_ans;
 }
-
+*/
 
 void make_nonblock_ioctl(int fd) {
     unsigned long ul = 1;
