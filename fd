@@ -1,0 +1,75 @@
+common/thread_pool.c:12:    int size = recv(user->fd, (void *)&msg, sizeof(msg), 0);
+common/thread_pool.c:14:        if (user->team) 
+common/thread_pool.c:15:            DBG(L_BLUE" %s "NONE"❤ \n", user->name);
+common/thread_pool.c:17:            DBG(L_RED" %s "NONE"❤ \n", user->name);
+common/thread_pool.c:19:        if (user->team) 
+common/thread_pool.c:20:            DBG(L_BLUE" %s : %s"NONE, user->name, msg.msg);
+common/thread_pool.c:22:            DBG(L_RED" %s : %s"NONE, user->name, msg.msg);
+common/thread_pool.c:23:        send(user->fd, (void *)&msg, sizeof(msg), 0);
+common/thread_pool.c:41:    DBG(L_GREEN"Thread Pool:"NONE"Task Push %s\n", user->name);
+common/thread_pool.c:57:    DBG(L_GREEN"Thread pool : "NONE"Task Pop %s.\n", user->name);
+common/sub_reactor.c:35:            DBG(L_YELLOW"events[n].data.ptr->name = %s"NONE"\n", user->name);
+common/udp_epoll.c:35:    DBG(GREEN"Sub Thread"NONE" : After Epoll Add %s.\n", user->name);
+common/udp_epoll.c:90:    strcpy(user->name, request.name);
+common/udp_epoll.c:91:    user->team = request.team;
+common/udp_epoll.c:93:    user->fd = new_fd;
+common/udp_epoll.c:107:    struct User *team =  (user->team ? bteam : rteam);
+common/udp_epoll.c:114:    if (user->team)
+thread_pool_task/common-RW/thread_pool.c:31:    recv(user->fd, (void *)&msg, sizeof(msg), 0);
+thread_pool_task/common-RW/thread_pool.c:32:    user->flag = 10;
+thread_pool_task/common-RW/thread_pool.c:34:        if (user->team) {     // Blue Team
+thread_pool_task/common-RW/thread_pool.c:35:            DBG(L_BLUE " %s " NONE "❤️\n", user->name);
+thread_pool_task/common-RW/thread_pool.c:37:            DBG(L_RED " %s " NONE "❤️\n", user->name);
+thread_pool_task/common-RW/thread_pool.c:40:        if (user->team) {  // Blue Team
+thread_pool_task/common-RW/thread_pool.c:41:            DBG(L_BLUE " %s : %s" NONE "\n", user->name, msg.msg);
+thread_pool_task/common-RW/thread_pool.c:43:            DBG(L_RED " %s : %s" NONE "\n", user->name, msg.msg);
+thread_pool_task/common-RW/thread_pool.c:45:        strcpy(msg.name, user->name);
+thread_pool_task/common-RW/thread_pool.c:46:        msg.team = user->team;
+thread_pool_task/common-RW/thread_pool.c:48:        send(user->fd, (void *)&msg, sizeof(msg), 0);
+thread_pool_task/common-RW/thread_pool.c:51:        DBG(RED "%s logout" NONE "\n", user->name);
+thread_pool_task/common-RW/thread_pool.c:52:        sprintf(tmp, "%s logout!", user->name);
+thread_pool_task/common-RW/thread_pool.c:53:        user->online = 0;
+thread_pool_task/common-RW/thread_pool.c:54:        int epollfd_tmp = (user->team ? bepollfd : repollfd);
+thread_pool_task/common-RW/thread_pool.c:55:        del_event(epollfd_tmp, user->fd);
+thread_pool_task/common-RW/thread_pool.c:57:        if (!strcmp(ball_status.name, user->name)) {  // 下线用户为带球者
+thread_pool_task/common-RW/thread_pool.c:68:            int tmpx = user->loc.x + msg.ctl.dirx,
+thread_pool_task/common-RW/thread_pool.c:69:                tmpy = user->loc.y + msg.ctl.diry;
+thread_pool_task/common-RW/thread_pool.c:70:            if (tmpx >= 0 && tmpx < court.width + 4) user->loc.x = tmpx;
+thread_pool_task/common-RW/thread_pool.c:71:            if (tmpy >= 0 && tmpy < court.height + 2) user->loc.y = tmpy;
+thread_pool_task/common-RW/thread_pool.c:77:            int ret = can_kick(&(user->loc), msg.ctl.strength, user->name);
+thread_pool_task/common-RW/thread_pool.c:82:                ball_status.who = user->team;
+thread_pool_task/common-RW/thread_pool.c:86:            int ret = can_access(&(user->loc));
+thread_pool_task/common-RW/thread_pool.c:88:                ball_status.who = user->team;
+thread_pool_task/common-RW/thread_pool.c:97:            int ret = can_access(&(user->loc));
+thread_pool_task/common-RW/thread_pool.c:100:                    strcmp(ball_status.name, user->name)) {
+thread_pool_task/common-RW/thread_pool.c:111:                ball_status.who = user->team;
+thread_pool_task/common-RW/thread_pool.c:114:                strcpy(ball_status.name, user->name);
+thread_pool_task/common-RW/thread_pool.c:117:                // 两项相消了 如 ball.x - (user->loc.x - 2) + 2;
+thread_pool_task/common-RW/thread_pool.c:118:                ball_status.relative_loc.x = ball.x - user->loc.x;
+thread_pool_task/common-RW/thread_pool.c:119:                ball_status.relative_loc.y = ball.y - user->loc.y;
+thread_pool_task/common-RW/thread_pool.c:145:    DBG(L_GREEN "Thread pool : " NONE "Task Push %s\n", user->name);
+thread_pool_task/common-RW/thread_pool.c:163:    DBG(L_GREEN "Thread Pool : " NONE "Task Pop %s.\n", user->name);
+thread_pool_task/common-RW/sub_reactor.c:32:            DBG(L_YELLOW "events[n].data.ptr->name = %s" NONE "\n", user->name);
+thread_pool_task/common-RW/udp_epoll.c:36:    DBG(GREEN "Sub Thread" NONE " : After Epoll Add %s.\n", user->name);
+thread_pool_task/common-RW/udp_epoll.c:113:    strcpy(user->name, request.name);
+thread_pool_task/common-RW/udp_epoll.c:114:    user->team = request.team;
+thread_pool_task/common-RW/udp_epoll.c:116:    user->fd = new_fd;
+thread_pool_task/common-RW/udp_epoll.c:117:    user->loc.x = rand() % (court.width + 4);
+thread_pool_task/common-RW/udp_epoll.c:118:    user->loc.y = rand() % (court.height + 2);
+thread_pool_task/common-RW/udp_epoll.c:130:    struct User *team = (user->team ? bteam : rteam);
+thread_pool_task/common-RW/udp_epoll.c:137:    if (user->team) {  // Blue Team
+thread_pool_task/common-RW/game.c:136:        if (user->team) {
+thread_pool_task/common-RW/game.c:141:        sprintf(username, "%s : ", user->name);
+thread_pool_task/common-RW/generate_json.c:168:    cJSON* name = cJSON_AddStringToObject(player, "name", user->name);
+thread_pool_task/common-RW/generate_json.c:171:    cJSON* x = cJSON_AddNumberToObject(player, "x", user->loc.x);
+thread_pool_task/common-RW/generate_json.c:174:    cJSON* y = cJSON_AddNumberToObject(player, "y", user->loc.y);
+thread_pool_task/common/thread_pool.c:12:    int size = recv(user->fd, (void *)&msg, sizeof(msg), 0);
+thread_pool_task/common/thread_pool.c:14:        if (user->team) 
+thread_pool_task/common/thread_pool.c:15:            DBG(L_BLUE" %s "NONE"❤ \n", user->name);
+thread_pool_task/common/thread_pool.c:17:            DBG(L_RED" %s "NONE"❤ \n", user->name);
+thread_pool_task/common/thread_pool.c:19:        if (user->team) 
+thread_pool_task/common/thread_pool.c:20:            DBG(L_BLUE" %s : %s"NONE, user->name, msg.msg);
+thread_pool_task/common/thread_pool.c:22:            DBG(L_RED" %s : %s"NONE, user->name, msg.msg);
+thread_pool_task/common/thread_pool.c:23:        send(user->fd, (void *)&msg, sizeof(msg), 0);
+thread_pool_task/common/thread_pool.c:41:    DBG(L_GREEN"Thread Pool:"NONE"Task Push %s\n", user->name);
+thread_pool_task/common/thread_pool.c:57:    DBG(L_GREEN"Thread pool : "NONE"Task Pop %s.\n", user->name);

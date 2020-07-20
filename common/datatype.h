@@ -30,6 +30,7 @@ struct User{
     int team;
     int fd; //用来存储用户的连接
     char name[20];
+    int online;
     int flag;//未响应次数
     struct Point loc;
 
