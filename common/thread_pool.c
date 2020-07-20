@@ -6,10 +6,14 @@
  ************************************************************************/
 
 #include "thread_pool.h"
+#include "udp_epoll.h"
+extern int repollfd, bepollfd;
 
 void do_echo(struct User *user) {
     struct FootBallMsg msg;
     int size = recv(user->fd, (void *)&msg, sizeof(msg), 0);
+    user->flag = 10;
+    //user->online = 1;
     if (msg.type & FT_ACK) {
         if (user->team) 
             DBG(L_BLUE" %s "NONE"❤ \n", user->name);
@@ -21,6 +25,11 @@ void do_echo(struct User *user) {
         else 
             DBG(L_RED" %s : %s\n"NONE, user->name, msg.msg);
         send(user->fd, (void *)&msg, sizeof(msg), 0);
+    } else if (msg.type & FT_FIN) {
+        DBG(RED"%s logout.\n", user->name);
+        user->online = 0;
+        int epollfd_tmp = (user->team ? bepollfd : repollfd);
+        del_event(epollfd_tmp, user->fd);
     }
 }
 

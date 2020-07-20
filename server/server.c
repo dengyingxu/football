@@ -12,6 +12,7 @@
 #include "../common/thread_pool.h"
 #include "../common/sub_reactor.h"
 #include "../common/heart_beat.h"
+#include "../common/server_exit.h"
 char *conf = "./server.conf";
 
 struct User *rteam;
@@ -45,7 +46,7 @@ int main(int argc, char **argv) {
     }
     
     if (!port) port = atoi(get_value(conf, "PORT"));
-    data_port = atoi(get_value(conf, "DATAPORT"));
+    //data_port = atoi(get_value(conf, "DATAPORT"));
     court.width = atoi(get_value(conf, "COLS"));
     court.heigth = atoi(get_value(conf, "LINES"));
     court.start.x = 1;
@@ -84,7 +85,9 @@ int main(int argc, char **argv) {
     pthread_create(&blue_t, NULL, sub_reactor, (void *)&blueQueue);
     //创建心跳线程
     pthread_create(&heart_t, NULL, heart_beat, NULL);
-    
+   
+    signal(SIGINT, server_exit);
+
     struct epoll_event ev, events[MAX * 2];
     ev.events = EPOLLIN;
     ev.data.fd = listener;

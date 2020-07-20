@@ -26,4 +26,5 @@
 #include "./color.h"
 #include "./common.h"
 #include "./datatype.h"
+#include <curses.h>
 #endif

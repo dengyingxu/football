@@ -24,6 +24,7 @@ FT_ACK	common/datatype.h	61;"	d
 FT_ACK	thread_pool_task/common-RW/datatype.h	63;"	d
 FT_ACK	thread_pool_task/common/datatype.h	60;"	d
 FT_CTL	thread_pool_task/common-RW/datatype.h	65;"	d
+FT_FIN	common/datatype.h	62;"	d
 FT_FIN	thread_pool_task/common-RW/datatype.h	64;"	d
 FT_GAME	thread_pool_task/common-RW/datatype.h	66;"	d
 FT_GAMEOVER	thread_pool_task/common-RW/datatype.h	68;"	d
@@ -73,6 +74,8 @@ LogRequest	thread_pool_task/common/datatype.h	/^struct LogRequest{$/;"	s
 LogResponse	common/datatype.h	/^struct LogResponse{$/;"	s
 LogResponse	thread_pool_task/common-RW/datatype.h	/^struct LogResponse {$/;"	s
 LogResponse	thread_pool_task/common/datatype.h	/^struct LogResponse{$/;"	s
+MAX	common/heart_beat.c	11;"	d	file:
+MAX	common/sub_reactor.c	11;"	d	file:
 MAX	common/udp_epoll.c	13;"	d	file:
 MAX	game.h	12;"	d
 MAX	thread_pool_task/common-RW/game.h	21;"	d
@@ -146,6 +149,7 @@ _CHATROOM_H	common/chatroom.h	9;"	d
 _CHATROOM_H	thread_pool_task/common-RW/chatroom.h	10;"	d
 _CHATROOM_H	thread_pool_task/common-RW/my_chatroom.h	10;"	d
 _CHATROOM_H	thread_pool_task/common/chatroom.h	9;"	d
+_CLIENT_RECVER_H	common/client_recver.h	9;"	d
 _CLIENT_RECVER_H	thread_pool_task/common-RW/client_recver.h	10;"	d
 _CLIENT_RE_DRAW_H	thread_pool_task/common-RW/client_re_draw.h	10;"	d
 _COLOR_H	common/color.h	9;"	d
@@ -165,6 +169,7 @@ _GLOBAL_H	thread_pool_task/common-RW/global.h	10;"	d
 _GLOBAL_H	thread_pool_task/common/global.h	9;"	d
 _HEAD_H	common/head.h	9;"	d
 _HEAD_H	thread_pool_task/common/head.h	9;"	d
+_HEART_BEAT_H	common/heart_beat.h	9;"	d
 _HEART_BEAT_H	thread_pool_task/common-RW/heart_beat.h	10;"	d
 _SEND_CHAT_H	thread_pool_task/common-RW/send_chat.h	10;"	d
 _SEND_CTL_H	thread_pool_task/common-RW/send_ctl.h	10;"	d
@@ -172,6 +177,7 @@ _SERVER_EXIT_H	thread_pool_task/common-RW/server_exit.h	10;"	d
 _SERVER_RE_DRAW_H	thread_pool_task/common-RW/server_re_draw.h	10;"	d
 _SHOW_DATA_STREAM_H	thread_pool_task/common-RW/show_data_stream.h	10;"	d
 _SHOW_STRENGTH_H	thread_pool_task/common-RW/show_strength.h	10;"	d
+_SUB_REACTOR_H	common/sub_reactor.h	9;"	d
 _SUB_REACTOR_H	thread_pool_task/common-RW/sub_reactor.h	10;"	d
 _TCP_CLIENT_H	common/tcp_client.h	9;"	d
 _TCP_CLIENT_H	thread_pool_task/common-RW/tcp_client.h	10;"	d
@@ -220,6 +226,7 @@ chat_send	thread_pool_task/common-RW/my_chatroom.h	/^int chat_send(struct Msg ms
 chat_send	thread_pool_task/common/chatroom.h	/^int chat_send(struct Msg msg, int fd) {$/;"	f
 check_online	thread_pool_task/common-RW/udp_epoll.c	/^int check_online(struct LogRequest *request) {$/;"	f
 client_recv	thread_pool_task/common-RW/client_recver.c	/^void *client_recv(void *arg) {$/;"	f
+client_recver	common/client_recver.c	/^void *client_recver(void *arg) {$/;"	f
 cond	common/thread_pool.h	/^    pthread_cond_t cond;$/;"	m	struct:task_queue
 cond	thread_pool_task/common-RW/thread_pool.h	/^    pthread_cond_t cond;$/;"	m	struct:task_queue
 cond	thread_pool_task/common/thread_pool.h	/^    pthread_cond_t cond;$/;"	m	struct:task_queue
@@ -239,7 +246,7 @@ ctrl	common/datatype.h	/^    struct Ctrl ctrl;$/;"	m	struct:TransMsg	typeref:str
 ctrl	thread_pool_task/common/datatype.h	/^    struct Ctrl ctrl;$/;"	m	struct:TransMsg	typeref:struct:TransMsg::Ctrl
 data_port	server/server.c	/^int data_port;$/;"	v
 data_stream	thread_pool_task/common-RW/game.h	/^char data_stream[20];$/;"	v
-del_event	common/udp_epoll.c	/^void del_event(int epollfd, int fd, int events) {$/;"	f
+del_event	common/udp_epoll.c	/^void del_event(int epollfd, int fd) {$/;"	f
 del_event	thread_pool_task/common-RW/udp_epoll.c	/^void del_event(int epollfd, int fd) {$/;"	f
 del_event	thread_pool_task/common/udp_epoll.c	/^void del_event(int epollfd, int fd, int events) {$/;"	f
 destory_win	game.h	/^void destory_win(WINDOW *win) {$/;"	f
@@ -298,7 +305,9 @@ head	common/thread_pool.h	/^    int head;$/;"	m	struct:task_queue
 head	thread_pool_task/common-RW/thread_pool.h	/^    int head;$/;"	m	struct:task_queue
 head	thread_pool_task/common/thread_pool.h	/^    int head;$/;"	m	struct:task_queue
 head	thread_pool_task/server/server.c	/^    int head;$/;"	m	struct:__anon1	file:
+heart_beat	common/heart_beat.c	/^void *heart_beat(void *arg) {$/;"	f
 heart_beat	thread_pool_task/common-RW/heart_beat.c	/^void *heart_beat(void *arg) {$/;"	f
+heart_beat_team	common/heart_beat.c	/^void heart_beat_team(struct User *team) {$/;"	f
 heart_beat_team	thread_pool_task/common-RW/heart_beat.c	/^void heart_beat_team(struct User *team) {$/;"	f
 height	thread_pool_task/common-RW/datatype.h	/^    int height;$/;"	m	struct:Map
 heigth	common/datatype.h	/^    int heigth;$/;"	m	struct:Map
@@ -312,6 +321,7 @@ kick_ball	thread_pool_task/common-RW/show_strength.c	/^void kick_ball() {$/;"	f
 loc	common/datatype.h	/^    struct Point loc;$/;"	m	struct:User	typeref:struct:User::Point
 loc	thread_pool_task/common-RW/datatype.h	/^    struct Point loc;$/;"	m	struct:User	typeref:struct:User::Point
 loc	thread_pool_task/common/datatype.h	/^    struct Point loc;$/;"	m	struct:User	typeref:struct:User::Point
+logout	client/client.c	/^void logout(int signum) {$/;"	f
 main	client/client.c	/^int main(int argc, char **argv) {$/;"	f
 main	client/test.c	/^int main() {$/;"	f
 main	server/server.c	/^int main(int argc, char **argv) {$/;"	f
@@ -408,11 +418,13 @@ socket_create_udp	thread_pool_task/common/udp_server.c	/^int socket_create_udp(i
 socket_udp	common/udp_client.c	/^int socket_udp() {$/;"	f
 socket_udp	thread_pool_task/common-RW/udp_client.c	/^int socket_udp() {$/;"	f
 socket_udp	thread_pool_task/common/udp_client.c	/^int socket_udp() {$/;"	f
+sockfd	client/client.c	/^int sockfd;$/;"	v
 start	common/datatype.h	/^    struct Point start;$/;"	m	struct:Map	typeref:struct:Map::Point
 start	thread_pool_task/common-RW/datatype.h	/^    struct Point start;$/;"	m	struct:Map	typeref:struct:Map::Point
 start	thread_pool_task/common/datatype.h	/^    struct Point start;$/;"	m	struct:Map	typeref:struct:Map::Point
 stop_ball	thread_pool_task/common-RW/show_strength.c	/^void stop_ball() {$/;"	f
 strength	thread_pool_task/common-RW/datatype.h	/^    int strength;$/;"	m	struct:Ctrl
+sub_reactor	common/sub_reactor.c	/^void *sub_reactor(void *arg) {$/;"	f
 sub_reactor	thread_pool_task/common-RW/sub_reactor.c	/^void *sub_reactor(void *arg) {$/;"	f
 sum	common/thread_pool.h	/^    int sum;$/;"	m	struct:task_queue
 sum	thread_pool_task/common-RW/thread_pool.h	/^    int sum;$/;"	m	struct:task_queue
