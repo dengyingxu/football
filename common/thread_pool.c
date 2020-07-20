@@ -17,9 +17,9 @@ void do_echo(struct User *user) {
             DBG(L_RED" %s "NONE"❤ \n", user->name);
     } else if (msg.type & (FT_WALL | FT_MSG)) {
         if (user->team) 
-            DBG(L_BLUE" %s : %s"NONE, user->name, msg.msg);
+            DBG(L_BLUE" %s : %s\n"NONE, user->name, msg.msg);
         else 
-            DBG(L_RED" %s : %s"NONE, user->name, msg.msg);
+            DBG(L_RED" %s : %s\n"NONE, user->name, msg.msg);
         send(user->fd, (void *)&msg, sizeof(msg), 0);
     }
 }
@@ -57,7 +57,7 @@ struct User *task_queue_pop(struct task_queue *taskQueue) {
     DBG(L_GREEN"Thread pool : "NONE"Task Pop %s.\n", user->name);
     if (++taskQueue->head == taskQueue->sum) {
         DBG(L_GREEN"Thread poll : "NONE" Task Queue End.\n");
-        taskQueue = 0;
+        taskQueue->head = 0;
     }
     pthread_mutex_unlock(&taskQueue->mutex);
     return user;

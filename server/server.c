@@ -11,6 +11,7 @@
 #include "../game.h"
 #include "../common/thread_pool.h"
 #include "../common/sub_reactor.h"
+#include "../common/heart_beat.h"
 char *conf = "./server.conf";
 
 struct User *rteam;
@@ -82,7 +83,7 @@ int main(int argc, char **argv) {
     //创建从反应堆线程
     pthread_create(&blue_t, NULL, sub_reactor, (void *)&blueQueue);
     //创建心跳线程
-    //pthread_create(&heart_t, NULL, heart_beat, NULL);
+    pthread_create(&heart_t, NULL, heart_beat, NULL);
     
     struct epoll_event ev, events[MAX * 2];
     ev.events = EPOLLIN;
