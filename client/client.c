@@ -9,11 +9,15 @@
 #include "../common/udp_client.h"
 #include "../common/client_recver.h"
 #include "../common/game.h"
+#include "../common/send_chat.h"
 
 char server_ip[20] = {0};
 int server_port = 0;
 char *conf = "./football.conf";
 int sockfd;
+struct FootBallMsg chat_msg;
+struct FootBallMsg ctl_msg;
+
 
 void logout(int signum) {
     struct FootBallMsg msg;
@@ -31,6 +35,13 @@ int main(int argc, char **argv) {
     struct LogRequest request;
     struct LogResponse response;
     bzero(&request, sizeof(request));
+
+    bzero(&chat_msg, sizeof(struct FootBallMsg));
+    bzero(&ctl_msg, sizeof(struct FootBallMsg));
+
+    chat_msg.type = FT_MSG;
+    ctl_msg.type = FT_CTL;
+    
 
     while ((opt = getopt(argc, argv, "h:p:n:t:m")) != -1) {
         switch (opt) {
@@ -123,16 +134,48 @@ int main(int argc, char **argv) {
     pthread_create(&draw_t, NULL, draw, NULL);
 #endif
     pthread_create(&recv_t, NULL, client_recv, NULL);
+   
+/*
+    signal(14, send_ctl);
+
+    struct itimerval  itimer;
+    itimer.it_interval.tv_sec = 0;
+    itimer.it_interval.tv_usec = 100000;
+    itimer.it_value.tv_sec = 0;
+    itimer.it_value.tv_usec = 100000;
+
+    setitimer(ITIMER_REAL, &itimer, NULL);
+
+*/
+
+    noecho();//不回响，不显示
+    cbreak();//关闭行缓冲，变成打印一个提交一个
+    keypad(stdscr, TRUE);//打开功能键
     while (1) {
-        struct FootBallMsg msg;
-        msg.type = FT_MSG;
-        DBG(YELLOW"Input Message :"NONE);
-        fflush(stdout);
-        scanf("%[^\n]s", msg.msg);
-        getchar();
-        if (strlen(msg.msg))
-            send(sockfd, (void *)&msg, sizeof(msg), 0);
+        int c = getchar();//用getch有bug会是图形丢失，可能要重绘
+        switch (c) {
+            case KEY_LEFT:
+                ctl_msg.ctl.dirx -= 2;
+                break;
+            case KEY_RIGHT:
+                ctl_msg.ctl.dirx += 2;
+                break;
+            case KEY_UP:
+                ctl_msg.ctl.diry -= 2;
+                break;
+            case KEY_DOWN:
+                ctl_msg.ctl.diry += 2;
+                break;
+            case 13:
+                send_chat();
+                break;
+            default:
+                break;
+        }
     }
+
+    
+    
     sleep(10);
 
     return 0;

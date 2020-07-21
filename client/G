@@ -1,2 +1,2 @@
-gcc client.c ../common/common.c ../common/udp_client.c ../common/global.c ../common/client_recver.c ../common/game.c -lpthread -lcurses $1 $2
+gcc client.c ../common/common.c ../common/udp_client.c ../common/global.c ../common/client_recver.c ../common/game.c ../common/send_chat.c -lpthread -lcurses $1 $2
 

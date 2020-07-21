@@ -97,9 +97,8 @@ int main(int argc, char **argv) {
     struct sockaddr_in client;
     socklen_t len = sizeof(client);
 
+    Show_Message(, , "Waitong for Login.", 1);
     while(1) {
-        //w_gotoxy_puts(Message, 1, 1, "Wait for Login\n");
-        //wrefresh(Message);
         DBG(YELLOW"Main Thread"NONE" : before epoll_wait\n");
         int nfds = epoll_wait(epoll_fd, events, MAX * 2, -1);
         DBG(YELLOW"Main Thread"NONE" : Atfer epoll_wait\n");
@@ -112,8 +111,10 @@ int main(int argc, char **argv) {
                 //accept();
                 int new_fd = udp_accept(epoll_fd, listener, &user);
                 if (new_fd > 0) {
+                    sprintf(buff, "%s Login. the Game.", user.name);
                     DBG(YELLOW"Main Thread"NONE" : Add %s to %s sub_reactor.\n", user.name, (user.team ? "BLUE" : "RED"));
                     add_to_sub_reactor(&user);
+                    Show_Message(, , buff, 1);
                 }
             } else {
                 recv(events[i].data.fd, buff, sizeof(buff), 0);

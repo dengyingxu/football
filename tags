@@ -19,6 +19,7 @@ Bpoint	thread_pool_task/common-RW/datatype.h	/^struct Bpoint {$/;"	s
 Ctrl	common/datatype.h	/^struct Ctrl{$/;"	s
 Ctrl	thread_pool_task/common-RW/datatype.h	/^struct Ctrl {$/;"	s
 Ctrl	thread_pool_task/common/datatype.h	/^struct Ctrl{$/;"	s
+DEFARG	common/game.h	12;"	d
 DEFARG	thread_pool_task/common-RW/game.h	13;"	d
 FT_ACK	common/datatype.h	61;"	d
 FT_ACK	thread_pool_task/common-RW/datatype.h	63;"	d
@@ -41,14 +42,14 @@ FT_WALL	thread_pool_task/common/datatype.h	58;"	d
 FootBallMsg	common/datatype.h	/^struct FootBallMsg {$/;"	s
 FootBallMsg	thread_pool_task/common-RW/datatype.h	/^struct FootBallMsg {$/;"	s
 FootBallMsg	thread_pool_task/common/datatype.h	/^struct FootBallMsg {$/;"	s
-Football	game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
+Football	common/game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
 Football	thread_pool_task/common-RW/game.h	/^WINDOW *Football, *Football_t, *Message, *Help, *Score, *Write;$/;"	v
 Football_t	thread_pool_task/common-RW/game.h	/^WINDOW *Football, *Football_t, *Message, *Help, *Score, *Write;$/;"	v
 GREEN	common/color.h	16;"	d
 GREEN	thread_pool_task/common-RW/color.h	17;"	d
 GREEN	thread_pool_task/common/color.h	16;"	d
 HEAD_H	thread_pool_task/common-RW/head.h	9;"	d
-Help	game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
+Help	common/game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
 Help	thread_pool_task/common-RW/game.h	/^WINDOW *Football, *Football_t, *Message, *Help, *Score, *Write;$/;"	v
 L_BLACK	common/color.h	13;"	d
 L_BLACK	thread_pool_task/common-RW/color.h	14;"	d
@@ -74,10 +75,11 @@ LogRequest	thread_pool_task/common/datatype.h	/^struct LogRequest{$/;"	s
 LogResponse	common/datatype.h	/^struct LogResponse{$/;"	s
 LogResponse	thread_pool_task/common-RW/datatype.h	/^struct LogResponse {$/;"	s
 LogResponse	thread_pool_task/common/datatype.h	/^struct LogResponse{$/;"	s
-MAX	common/heart_beat.c	11;"	d	file:
+MAX	common/game.h	18;"	d
+MAX	common/heart_beat.c	13;"	d	file:
+MAX	common/server_exit.c	9;"	d	file:
 MAX	common/sub_reactor.c	11;"	d	file:
 MAX	common/udp_epoll.c	13;"	d	file:
-MAX	game.h	12;"	d
 MAX	thread_pool_task/common-RW/game.h	21;"	d
 MAX	thread_pool_task/common-RW/heart_beat.c	14;"	d	file:
 MAX	thread_pool_task/common-RW/server_exit.c	9;"	d	file:
@@ -102,7 +104,7 @@ MAX_CLIENT	thread_pool_task/common/chatroom.h	41;"	d
 Map	common/datatype.h	/^struct Map{$/;"	s
 Map	thread_pool_task/common-RW/datatype.h	/^struct Map {$/;"	s
 Map	thread_pool_task/common/datatype.h	/^struct Map{$/;"	s
-Message	game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
+Message	common/game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
 Message	thread_pool_task/common-RW/game.h	/^WINDOW *Football, *Football_t, *Message, *Help, *Score, *Write;$/;"	v
 Msg	common/chatroom.h	/^struct Msg {$/;"	s
 Msg	thread_pool_task/common-RW/chatroom.h	/^struct Msg {$/;"	s
@@ -125,9 +127,10 @@ RecvMsg	common/chatroom.h	/^struct RecvMsg {$/;"	s
 RecvMsg	thread_pool_task/common-RW/chatroom.h	/^struct RecvMsg {$/;"	s
 RecvMsg	thread_pool_task/common-RW/my_chatroom.h	/^struct RecvMsg {$/;"	s
 RecvMsg	thread_pool_task/common/chatroom.h	/^struct RecvMsg {$/;"	s
-Score	game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
+Score	common/game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
 Score	thread_pool_task/common-RW/datatype.h	/^struct Score {$/;"	s
 Score	thread_pool_task/common-RW/game.h	/^WINDOW *Football, *Football_t, *Message, *Help, *Score, *Write;$/;"	v
+Show_Message	common/game.h	14;"	d
 Show_Message	thread_pool_task/common-RW/game.h	16;"	d
 Speed	thread_pool_task/common-RW/datatype.h	/^struct Speed {$/;"	s
 TaskQueue	thread_pool_task/server/server.c	/^}TaskQueue;$/;"	t	typeref:struct:__anon1	file:
@@ -139,7 +142,7 @@ TransMsg	thread_pool_task/common/datatype.h	/^struct TransMsg{$/;"	s
 User	common/datatype.h	/^struct User{$/;"	s
 User	thread_pool_task/common-RW/datatype.h	/^struct User {$/;"	s
 User	thread_pool_task/common/datatype.h	/^struct User{$/;"	s
-Write	game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
+Write	common/game.h	/^WINDOW *Football, *Message, *Help, *Score, *Write;$/;"	v
 Write	thread_pool_task/common-RW/game.h	/^WINDOW *Football, *Football_t, *Message, *Help, *Score, *Write;$/;"	v
 YELLOW	common/color.h	18;"	d
 YELLOW	thread_pool_task/common-RW/color.h	19;"	d
@@ -161,7 +164,7 @@ _COMMON_H	thread_pool_task/common/common.h	9;"	d
 _DATATYPE_H	common/datatype.h	9;"	d
 _DATATYPE_H	thread_pool_task/common-RW/datatype.h	10;"	d
 _DATATYPE_H	thread_pool_task/common/datatype.h	9;"	d
-_GAME_H	game.h	9;"	d
+_GAME_H	common/game.h	9;"	d
 _GAME_H	thread_pool_task/common-RW/game.h	10;"	d
 _GENERATE_JSON_H	thread_pool_task/common-RW/generate_json.h	10;"	d
 _GLOBAL_H	common/global.h	9;"	d
@@ -173,6 +176,7 @@ _HEART_BEAT_H	common/heart_beat.h	9;"	d
 _HEART_BEAT_H	thread_pool_task/common-RW/heart_beat.h	10;"	d
 _SEND_CHAT_H	thread_pool_task/common-RW/send_chat.h	10;"	d
 _SEND_CTL_H	thread_pool_task/common-RW/send_ctl.h	10;"	d
+_SERVER_EXIT_H	common/server_exit.h	9;"	d
 _SERVER_EXIT_H	thread_pool_task/common-RW/server_exit.h	10;"	d
 _SERVER_RE_DRAW_H	thread_pool_task/common-RW/server_re_draw.h	10;"	d
 _SHOW_DATA_STREAM_H	thread_pool_task/common-RW/show_data_stream.h	10;"	d
@@ -224,9 +228,10 @@ chat_send	common/chatroom.h	/^int chat_send(struct Msg msg, int fd) {$/;"	f
 chat_send	thread_pool_task/common-RW/chatroom.h	/^int chat_send(struct Msg msg, int fd) {$/;"	f
 chat_send	thread_pool_task/common-RW/my_chatroom.h	/^int chat_send(struct Msg msg, int fd) {$/;"	f
 chat_send	thread_pool_task/common/chatroom.h	/^int chat_send(struct Msg msg, int fd) {$/;"	f
+check_online	common/udp_epoll.c	/^int check_online(struct LogRequest *request) {$/;"	f
 check_online	thread_pool_task/common-RW/udp_epoll.c	/^int check_online(struct LogRequest *request) {$/;"	f
+client_recv	common/client_recver.c	/^void *client_recv(void *arg) {$/;"	f
 client_recv	thread_pool_task/common-RW/client_recver.c	/^void *client_recv(void *arg) {$/;"	f
-client_recver	common/client_recver.c	/^void *client_recver(void *arg) {$/;"	f
 cond	common/thread_pool.h	/^    pthread_cond_t cond;$/;"	m	struct:task_queue
 cond	thread_pool_task/common-RW/thread_pool.h	/^    pthread_cond_t cond;$/;"	m	struct:task_queue
 cond	thread_pool_task/common/thread_pool.h	/^    pthread_cond_t cond;$/;"	m	struct:task_queue
@@ -237,9 +242,9 @@ conf_ans	common/global.c	/^ char conf_ans[50] = {0};$/;"	v
 conf_ans	thread_pool_task/common-RW/global.c	/^char conf_ans[50] = {0};/;"	v
 conf_ans	thread_pool_task/common/global.c	/^ char conf_ans[50] = {0};$/;"	v
 conf_ans	thread_pool_task/server/server.c	/^char conf_ans[50] = {0};$/;"	v
-court	game.h	/^struct Map court;$/;"	v	typeref:struct:Map
+court	common/game.h	/^struct Map court;$/;"	v	typeref:struct:Map
 court	thread_pool_task/common-RW/game.h	/^struct Map court;$/;"	v	typeref:struct:Map
-create_newwin	game.h	/^WINDOW *create_newwin(int width, int height, int startx, int starty) {$/;"	f
+create_newwin	common/game.c	/^WINDOW *create_newwin(int width, int height, int startx, int starty) {$/;"	f
 create_newwin	thread_pool_task/common-RW/game.c	/^WINDOW *create_newwin(int width, int height, int start_x, int start_y) {$/;"	f
 ctl	thread_pool_task/common-RW/datatype.h	/^    struct Ctrl ctl;$/;"	m	struct:FootBallMsg	typeref:struct:FootBallMsg::Ctrl
 ctrl	common/datatype.h	/^    struct Ctrl ctrl;$/;"	m	struct:TransMsg	typeref:struct:TransMsg::Ctrl
@@ -249,7 +254,7 @@ data_stream	thread_pool_task/common-RW/game.h	/^char data_stream[20];$/;"	v
 del_event	common/udp_epoll.c	/^void del_event(int epollfd, int fd) {$/;"	f
 del_event	thread_pool_task/common-RW/udp_epoll.c	/^void del_event(int epollfd, int fd) {$/;"	f
 del_event	thread_pool_task/common/udp_epoll.c	/^void del_event(int epollfd, int fd, int events) {$/;"	f
-destory_win	game.h	/^void destory_win(WINDOW *win) {$/;"	f
+destory_win	common/game.c	/^void destory_win(WINDOW *win) {$/;"	f
 destory_win	thread_pool_task/common-RW/game.c	/^void destory_win(WINDOW *win) {$/;"	f
 dirx	common/datatype.h	/^    int dirx;\/\/方向$/;"	m	struct:TransMsg
 dirx	thread_pool_task/common-RW/datatype.h	/^    int dirx;$/;"	m	struct:Ctrl
@@ -261,7 +266,7 @@ do_echo	common/thread_pool.c	/^void do_echo(struct User *user) {$/;"	f
 do_echo	thread_pool_task/common-RW/thread_pool.c	/^void do_echo(struct User *user) {$/;"	f
 do_echo	thread_pool_task/common/thread_pool.c	/^void do_echo(struct User *user) {$/;"	f
 do_echo	thread_pool_task/server/server.c	/^void do_echo(int fd) {$/;"	f
-draw	game.h	/^void *draw(void *arg) {$/;"	f
+draw	common/game.c	/^void *draw(void *arg) {$/;"	f
 draw	thread_pool_task/common-RW/game.c	/^void *draw(void *arg) {$/;"	f
 draw_player	thread_pool_task/common-RW/client_re_draw.c	/^void draw_player(cJSON* court_obj, const char* team_color) {$/;"	f
 epollfd	common/thread_pool.h	/^    int epollfd; \/\/线程池对应的从反应堆$/;"	m	struct:task_queue
@@ -295,11 +300,11 @@ generate_player_json	thread_pool_task/common-RW/generate_json.c	/^cJSON* generat
 generate_score_json	thread_pool_task/common-RW/generate_json.c	/^void* generate_score_json(void* arg) {$/;"	f
 get_value	common/common.c	/^char *get_value(char *path, char *key) {$/;"	f
 get_value	thread_pool_task/common-RW/common.c	/^char *get_value(char *path, char *key) {$/;"	f
-gotoxy	game.h	/^void gotoxy(int x, int y) {$/;"	f
+gotoxy	common/game.c	/^void gotoxy(int x, int y) {$/;"	f
 gotoxy	thread_pool_task/common-RW/game.c	/^void gotoxy(int x, int y) {$/;"	f
 gotoxy_puc	thread_pool_task/common-RW/game.c	/^void gotoxy_puc(int x, int y, int c) {$/;"	f
-gotoxy_putc	game.h	/^void gotoxy_putc(int x, int y, int c) {$/;"	f
-gotoxy_puts	game.h	/^void gotoxy_puts(int x, int y, char* s) {$/;"	f
+gotoxy_putc	common/game.c	/^void gotoxy_putc(int x, int y, int c) {$/;"	f
+gotoxy_puts	common/game.c	/^void gotoxy_puts(int x, int y, char* s) {$/;"	f
 gotoxy_puts	thread_pool_task/common-RW/game.c	/^void gotoxy_puts(int x, int y, char *s) {$/;"	f
 head	common/thread_pool.h	/^    int head;$/;"	m	struct:task_queue
 head	thread_pool_task/common-RW/thread_pool.h	/^    int head;$/;"	m	struct:task_queue
@@ -313,7 +318,7 @@ height	thread_pool_task/common-RW/datatype.h	/^    int height;$/;"	m	struct:Map
 heigth	common/datatype.h	/^    int heigth;$/;"	m	struct:Map
 heigth	thread_pool_task/common/datatype.h	/^    int heigth;$/;"	m	struct:Map
 init_football	thread_pool_task/common-RW/game.c	/^void init_football() {$/;"	f
-initfootball	game.h	/^void initfootball() {$/;"	f
+initfootball	common/game.c	/^void initfootball() {$/;"	f
 is_carry	thread_pool_task/common-RW/datatype.h	/^    int is_carry;$/;"	m	struct:BallStatus
 kick	common/datatype.h	/^    int kick;$/;"	m	struct:Ctrl
 kick	thread_pool_task/common/datatype.h	/^    int kick;$/;"	m	struct:Ctrl
@@ -344,6 +349,7 @@ message	common/chatroom.h	/^    char message[512];$/;"	m	struct:Msg
 message	thread_pool_task/common-RW/chatroom.h	/^    char message[512];$/;"	m	struct:Msg
 message	thread_pool_task/common-RW/my_chatroom.h	/^    char message[512];$/;"	m	struct:Msg
 message	thread_pool_task/common/chatroom.h	/^    char message[512];$/;"	m	struct:Msg
+message_num	common/game.c	/^int message_num = 0;$/;"	v
 message_num	thread_pool_task/common-RW/game.c	/^int message_num = 0;$/;"	v
 msg	common/chatroom.h	/^    struct Msg msg;$/;"	m	struct:RecvMsg	typeref:struct:RecvMsg::Msg
 msg	common/datatype.h	/^    char msg[512];$/;"	m	struct:LogRequest
@@ -395,11 +401,13 @@ send_chat	thread_pool_task/common-RW/send_chat.c	/^void send_chat() {$/;"	f
 send_court_json	thread_pool_task/common-RW/generate_json.c	/^void send_court_json() {$/;"	f
 send_ctl	thread_pool_task/common-RW/send_ctl.c	/^void send_ctl(int signum) {$/;"	f
 send_score_json	thread_pool_task/common-RW/generate_json.c	/^void send_score_json() {$/;"	f
+server_exit	common/server_exit.c	/^void server_exit(int signum) {$/;"	f
 server_exit	thread_pool_task/common-RW/server_exit.c	/^void server_exit(int signum) {$/;"	f
 server_ip	client/client.c	/^char server_ip[20] = {0};$/;"	v
 server_port	client/client.c	/^int server_port = 0;$/;"	v
 show_data_stream	thread_pool_task/common-RW/show_data_stream.c	/^void show_data_stream(int type) {$/;"	f
 show_help_message	thread_pool_task/common-RW/game.c	/^void show_help_message() {$/;"	f
+show_message	common/game.c	/^void show_message(WINDOW *win, struct User *user, char *msg, int type) {$/;"	f
 show_message	thread_pool_task/common-RW/game.c	/^void show_message(WINDOW *win, struct User *user, char *msg, int type) {$/;"	f
 show_strength	thread_pool_task/common-RW/show_strength.c	/^void show_strength() {$/;"	f
 size	common/datatype.h	/^    int size;$/;"	m	struct:FootBallMsg
@@ -475,9 +483,9 @@ udp_connect	common/udp_epoll.c	/^int udp_connect(int epollfd, struct sockaddr_in
 udp_connect	thread_pool_task/common-RW/udp_epoll.c	/^int udp_connect(int epollfd, struct sockaddr_in *serveraddr) {$/;"	f
 udp_connect	thread_pool_task/common/udp_epoll.c	/^int udp_connect(int epollfd, struct sockaddr_in *serveraddr) {$/;"	f
 v	thread_pool_task/common-RW/datatype.h	/^    struct Speed v;$/;"	m	struct:BallStatus	typeref:struct:BallStatus::Speed
-w_gotoxy_putc	game.h	/^void w_gotoxy_putc(WINDOW *win, int x, int y, int c) {$/;"	f
+w_gotoxy_putc	common/game.c	/^void w_gotoxy_putc(WINDOW *win, int x, int y, int c) {$/;"	f
 w_gotoxy_putc	thread_pool_task/common-RW/game.c	/^void w_gotoxy_putc(WINDOW *win, int x, int y, int c) {$/;"	f
-w_gotoxy_puts	game.h	/^void w_gotoxy_puts(WINDOW *win, int x, int y, char *s) {$/;"	f
+w_gotoxy_puts	common/game.c	/^void w_gotoxy_puts(WINDOW *win, int x, int y, char *s) {$/;"	f
 w_gotoxy_puts	thread_pool_task/common-RW/game.c	/^void w_gotoxy_puts(WINDOW *win, int x, int y, char *s) {$/;"	f
 who	thread_pool_task/common-RW/datatype.h	/^    int who;  \/\/ 哪队带球$/;"	m	struct:BallStatus
 width	common/datatype.h	/^    int width;$/;"	m	struct:Map
