@@ -8,7 +8,7 @@
 #include "../common/head.h"
 #include "../common/udp_server.h"
 #include "../common/udp_epoll.h"
-#include "../game.h"
+#include "../common/game.h"
 #include "../common/thread_pool.h"
 #include "../common/sub_reactor.h"
 #include "../common/heart_beat.h"
@@ -62,7 +62,9 @@ int main(int argc, char **argv) {
 
     DBG(GREEN"INFO"NONE": Server start on Port %d\n", port);
 
-//    pthread_create(&draw_t, NULL, draw, NULL);
+#ifndef _D
+    pthread_create(&draw_t, NULL, draw, NULL);
+#endif
 
     epoll_fd = epoll_create(MAX * 2);
     repollfd = epoll_create(MAX);
